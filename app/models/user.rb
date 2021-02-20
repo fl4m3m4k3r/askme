@@ -10,6 +10,11 @@ class User < ApplicationRecord
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true
 
+  validates :username, length: { maximum: 40, too_long: 'Username must be include up to 40 symbols maximum'}
+  validates :username, format: { with: /\A@[a-zA-Z0-9\_]+\z/ }
+
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
   attr_accessor :password
 
   validates :password, on: :create, presence: true;
