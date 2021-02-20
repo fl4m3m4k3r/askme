@@ -7,20 +7,21 @@ class User < ApplicationRecord
 
   has_many :questions
 
+  before_validation :downcase_username
+  before_save :encrypt_password
+
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true
 
   validates :username, length: { maximum: 40, too_long: 'Username must be include up to 40 symbols maximum'}
-  validates :username, format: { with: /\A@[a-zA-Z0-9\_]+\z/ }
+  validates :username, format: { with: /\A@[a-zA-Z0-9_]+\z/ }
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   attr_accessor :password
 
-  validates :password, on: :create, presence: true;
-  validates :password, confirmation: true;
-
-  before_save :encrypt_password
+  validates :password, on: :create, presence: true
+  validates :password, confirmation: true
 
   def encrypt_password
     if self.password.present?
@@ -44,6 +45,10 @@ class User < ApplicationRecord
     else
       nil
     end
+  end
+
+  def downcase_username
+    username.downcase!
   end
 
 end
