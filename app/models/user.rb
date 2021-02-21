@@ -5,6 +5,8 @@ class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
 
+  attr_accessor :password
+
   has_many :questions
 
   before_validation :downcase_username
@@ -13,12 +15,10 @@ class User < ApplicationRecord
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true
 
-  validates :username, length: { maximum: 40, too_long: 'Username must be include up to 40 symbols maximum'}
+  validates :username, length: { maximum: 40 }
   validates :username, format: { with: /\A@[a-zA-Z0-9_]+\z/ }
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-
-  attr_accessor :password
 
   validates :password, on: :create, presence: true
   validates :password, confirmation: true
@@ -50,5 +50,4 @@ class User < ApplicationRecord
   def downcase_username
     username.downcase!
   end
-
 end
