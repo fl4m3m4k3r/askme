@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   has_many :questions
 
-  before_validation :downcase_username
+  before_validation :downcase_username_and_email
   before_save :encrypt_password
 
   validates :username, :email, presence: true
@@ -47,7 +47,8 @@ class User < ApplicationRecord
     end
   end
 
-  def downcase_username
-    username.downcase!
+  def downcase_username_and_email
+    username&.downcase!
+    email&.downcase!
   end
 end
