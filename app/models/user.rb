@@ -23,6 +23,19 @@ class User < ApplicationRecord
   validates :password, on: :create, presence: true
   validates :password, confirmation: true
 
+  def self.authenticate(email, password)
+    user = find_by(email: email&.downcase)
+
+    if user.present? && user.password_hash == User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
+      user
+    else
+      nil
+    end
+  end
+
+  def self.hash_to_string(password_hash)
+    password_hash.unpack('H*')[0]
+  end
 
   def encrypt_password
     if self.password.present?
@@ -31,20 +44,6 @@ class User < ApplicationRecord
       self.password_hash = User.hash_to_string(
         OpenSSL::PKCS5.pbkdf2_hmac(self.password, self.password_salt, ITERATIONS, DIGEST.length, DIGEST)
       )
-    end
-  end
-
-  def self.hash_to_string(password_hash)
-    password_hash.unpack('H*')[0]
-  end
-
-  def self.authenticate(email, password)
-    user = find_by(email: email.downcase)
-
-    if user.present? && user.password_hash == User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
-      user
-    else
-      nil
     end
   end
 
