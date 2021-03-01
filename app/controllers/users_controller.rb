@@ -1,39 +1,36 @@
 class UsersController < ApplicationController
   def index
-    @users = [
-      User.new(
-        id: 1,
-        name: 'Vadim',
-        username: 'installero',
-        avatar_url: 'http://placehold.it/300'
-      ),
-      User.new(
-        id: 2,
-        name: 'Misha',
-        username: 'aristofun'
-      )
-    ]
+    @users = User.all
   end
 
   def new
+    @user = User.new
   end
 
   def edit
   end
 
+  def create
+    @user = User.new(user_params)
+
+<<<<<<< HEAD
+    @user.save
+=======
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: 'Вы успешно зарегистрированы!'
+    else
+      render 'new'
+    end
+>>>>>>> 0c37b7b... temp
+  end
+
   def show
-    @user = User.new(
-      name: 'Vadim',
-      username: 'installero',
-      avatar_url: 'https://secure.gravatar.com/avatar/'\
-        '71269686e0f757ddb4f73614f43ae445?s=100'
-    )
+  end
 
-    @questions = [
-      Question.new(text: 'Как дела?', created_at: Date.parse('27.03.2016')),
-      Question.new(text: 'Что делаешь?', created_at: Date.parse('28.03.2016'))
-    ]
-
-    @new_question = Question.new
+  private
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation,
+                                 :name, :username, :avatar_url)
   end
 end
