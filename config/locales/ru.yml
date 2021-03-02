@@ -18,6 +18,3 @@ ru:
     abbr_month_names: [~, Янв, Фев, Мар, Апр, Маи, Июн, Июл, Авг, Сен, Окт, Ноя, Дек]
   time:
     formats:
-      default: "%d-%m-%Y %H:%M:%S"
-      short: "%d %B %H:%M"
-      long: "%B %d, %Y %H:%M"
