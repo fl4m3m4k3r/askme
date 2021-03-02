@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true
 
   validates :username, length: { maximum: 40 }
-  validates :username, format: { with: /\A@[a-zA-Z0-9_]+\z/ }
+  validates :username, format: { with: /\A[a-zA-Z0-9_]+\z/ }
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
