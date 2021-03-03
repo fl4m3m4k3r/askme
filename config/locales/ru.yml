@@ -1,10 +1,10 @@
 ru:
   question:
-    zero: 'Вопросов нет'
-    one: '%{count} вопрос'
-    few: '%{count} вопроса'
-    many: '%{count} вопросов'
-    other: 'вопросов'
+    zero: 'Вопросов'
+    one: '%{count} Вопрос'
+    few: '%{count} Вопроса'
+    many: '%{count} Вопросов'
+    other: 'Вопросов'
   date:
     formats:
       default: "%d-%m-%Y"
