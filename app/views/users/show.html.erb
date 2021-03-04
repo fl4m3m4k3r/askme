@@ -24,15 +24,15 @@
   <div class="user-statistics container text-center">
     <div class="column-1-3">
       <h1 class="title-small"><%= @questions_count %></h1>
-      <p>вопросов</p>
+      <p><%= word_decline(@questions_count, 'question') %></p>
     </div>
     <div class="column-1-3">
       <h1 class="title-small"><%= @answers_count %></h1>
-      <p>ответов</p>
+      <p><%= word_decline(@answers_count, 'answer') %></p>
     </div>
     <div class="column-1-3">
       <h1 class="title-small"><%= @unanswered_count %></h1>
-      <p>безответных</p>
+      <p><%= word_decline(@unanswered_count, 'unanswered') %></p>
     </div>
   </div>
 </div>

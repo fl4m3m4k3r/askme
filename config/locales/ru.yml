@@ -1,10 +1,26 @@
 ru:
   question:
     zero: 'Вопросов'
-    one: '%{count} Вопрос'
-    few: '%{count} Вопроса'
-    many: '%{count} Вопросов'
+    one: 'Вопрос'
+    few: 'Вопроса'
+    many: 'Вопросов'
     other: 'Вопросов'
+
+  answer:
+    zero: 'Ответов'
+    one: 'Ответ'
+    few: 'Ответа'
+    many: 'Ответов'
+    other: 'Ответов'
+
+  unanswered:
+    zero: 'Неотвеченный'
+    one: 'Неотвеченный'
+    few: 'Неотвеченных'
+    many: 'Неотвеченных'
+    other: 'Неотвеченных'
+
+
   ru:
     activerecord:
       errors:
