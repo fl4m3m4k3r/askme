@@ -16,19 +16,33 @@
 }
 
 .question + .question {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
-.question-text,
-.question-answer {
+.question-text {
   margin-bottom: 10px;
 }
 
 .question-text {
+  font-size: 20px;
   color: #005a55;
 }
 
 .question-answer {
+  font-size: 18px;
+}
+
+.question-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #D9E6E5;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.question-author {
+  font-size: 16px;
+  color: #005a55;
 }
 
 .question-date {
@@ -38,9 +52,7 @@
 
 .question-actions {
   font-size: 20px;
-  border-top: 1px solid #D9E6E5;
   text-align: right;
-  padding: 10px 15px;
 }
 
 .question-actions a {

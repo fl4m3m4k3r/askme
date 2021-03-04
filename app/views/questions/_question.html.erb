@@ -7,24 +7,37 @@
     <div class="question-text text-lead">
       <%= question.text %>
     </div>
+
+    <% if question.answer.present? %>
+      <div class="question-answer text-lead">
+        <%= question.answer if question.answer.present? %>
+      </div>
+    <% end %>
   </div>
 
-  <% if question.answer.present? %>
-    <div class="question-anwer text-lead">
-      <%= question.answer if question.answer.present? %>
-    </div>
-  <% end %>
+  <div class="question-footer">
+    <div class="question-info">
+      <div class="question-date">
+        <%= l(question.created_at, format: :short) %>
+      </div>
 
-  <div class="question-date">
-    <%= l(question.created_at, format: :short) %>
+      <div class="question-author-div">
+        <div>
+          <% if question.author.nil? %>
+            <p class="question-author">Анонимный пользователь</p>
+          <% else %>
+            <p class="question-author"><%= link_to "#{User.find_by(id: question.author).username}", "#{User.find_by(id: question.author).id}"%></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <% if question.user == current_user %>
+      <div class="question-actions">
+        <%= link_to fa_icon(action_icon), edit_question_path(question) %>
+        <%= link_to fa_icon('trash-o'), question_path(question),
+                    method: :delete, data: {confirm: 'Точно удалить вопрос?'}%>
+      </div>
+    <% end %>
   </div>
-
-  <% if question.user == current_user %>
-    <div class="question-action">
-      <%= link_to fa_icon(action_icon), edit_question_path(question) %>
-      <%= link_to fa_icon('trash-o'), question_path(question),
-                  method: :delete, data: {confirm: 'Точно удалить вопрос?'}%>
-    </div>
-  <% end %>
-
 </div>
