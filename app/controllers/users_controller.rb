@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.destroy!
+    if @user.destroy
     redirect_to root_path, notice: 'Аккаунт успешно удален. Не возвращайтесь больше никогда.. :('
     end
   end
