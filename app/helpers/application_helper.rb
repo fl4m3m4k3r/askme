@@ -7,10 +7,6 @@ module ApplicationHelper
     end
   end
 
-  def word_decline(number, word)
-    I18n.t :"#{word}", count: number
-  end
-
   def fa_icon(icon_class)
     content_tag 'span', '', class: "fa fa-#{icon_class}"
   end
