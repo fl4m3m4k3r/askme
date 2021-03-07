@@ -1,13 +1,13 @@
 require 'openssl'
 
 class User < ApplicationRecord
-  #Параметры работы модуля шифрования паролей
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
 
   attr_accessor :password
 
   has_many :questions, dependent: :destroy
+  has_many :author_questions, class_name: 'Question', foreign_key: :author_id, dependent: :nullify
 
   before_validation :downcase_username_and_email
   before_save :encrypt_password
