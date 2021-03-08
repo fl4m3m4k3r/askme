@@ -26,7 +26,7 @@
           <% if question.author.nil? %>
             <p class="question-author">Анонимный пользователь</p>
           <% else %>
-            <p class="question-author"><%= link_to "#{User.find_by(id: question.author).username}", "#{User.find_by(id: question.author).id}"%></p>
+            <p class="question-author"><%= link_to question.author.username, "#{question.author.id}" %></p>
           <% end %>
         </div>
       </div>
