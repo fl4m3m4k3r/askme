@@ -34,3 +34,16 @@
   list-style: none;
   margin-bottom: 10px;
 }
+
+.color_field {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  display: flex;
+
+}
+
+.pickr {
+
+  margin-right: 10px;
+}
