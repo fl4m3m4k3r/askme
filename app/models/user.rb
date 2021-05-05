@@ -23,6 +23,8 @@ class User < ApplicationRecord
   validates :password, on: :create, presence: true
   validates :password, confirmation: true
 
+  validates :profile_color, format: /\A#([[:xdigit:]]){3,6}\z/
+
   def self.authenticate(email, password)
     user = find_by(email: email&.downcase)
 
