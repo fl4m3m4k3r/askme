@@ -11,4 +11,7 @@ import "channels"
 Rails.start()
 ActiveStorage.start()
 
+require('jquery')
+Window.jquery = $; window.$ = $
+
 import '../stylesheets/application.scss'
