@@ -17,6 +17,7 @@ group :production do
 end
 
 group :development do
+  gem 'ffaker'
   gem 'byebug'
   gem 'sqlite3', '~> 1.4'
   gem 'web-console', '>= 4.1.0'
