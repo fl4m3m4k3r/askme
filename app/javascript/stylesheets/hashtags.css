@@ -1,0 +1,32 @@
+.hashtags {
+  min-height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fff;
+}
+
+.main .hashtags {
+  margin-top: 20px;
+  border-top: #ccc solid 1px;
+}
+
+.hashtag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: #CCC;
+  border-radius: 5px;
+  padding: 0 5px;
+  margin: 0 5px;
+  font-size: 1.4rem;
+}
+
+.hashtag:hover {
+  background-color: #C6C6C6;
+  color: darkred;
+  transition: color linear .15s;
+}
